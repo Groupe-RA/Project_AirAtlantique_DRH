@@ -1,0 +1,22 @@
+﻿<Window x:Class="AirAtlantique.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MainWindow" Height="800" Width="800" WindowStartupLocation="CenterScreen"
+WindowStyle="None"
+ResizeMode="NoResize"
+FontFamily="Segoe UI"
+Background="Transparent"
+AllowsTransparency="True">
+    <Grid x:Name="RootGrid">
+        <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="4">
+            <StackPanel.Resources>
+                <Style TargetType="TextBlock">
+                    <Setter Property="Foreground" Value="White" />
+                    <Setter Property="FontFamily" Value="Marlett" />
+                </Style>
+            </StackPanel.Resources>
+            <TextBlock Text="r" />
+        </StackPanel>
+        <ContentControl x:Name="contentControl" Grid.Row="1"/>
+    </Grid>
+</Window>

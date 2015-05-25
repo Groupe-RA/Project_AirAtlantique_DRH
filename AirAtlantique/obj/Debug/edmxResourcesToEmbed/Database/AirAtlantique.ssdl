@@ -1,0 +1,208 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="AirAtlantiqueDRHModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="AcquiredFormation">
+    <Key>
+      <PropertyRef Name="AcquiredID" />
+    </Key>
+    <Property Name="AcquiredID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="EmployeeID" Type="int" Nullable="false" />
+    <Property Name="FormationID" Type="int" Nullable="false" />
+    <Property Name="AcquiredDate" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Employee">
+    <Key>
+      <PropertyRef Name="EmployeeID" />
+    </Key>
+    <Property Name="EmployeeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="FirstName" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="JobID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="EmployeeSession">
+    <Key>
+      <PropertyRef Name="EmployeeID" />
+      <PropertyRef Name="SessionID" />
+    </Key>
+    <Property Name="EmployeeID" Type="int" Nullable="false" />
+    <Property Name="SessionID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Formation">
+    <Key>
+      <PropertyRef Name="FormationID" />
+    </Key>
+    <Property Name="FormationID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FormationName" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="ValidityDuration" Type="int" Nullable="false" />
+    <Property Name="FormationDescription" Type="text" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Job">
+    <Key>
+      <PropertyRef Name="JobID" />
+    </Key>
+    <Property Name="JobID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="JobName" Type="varchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Login">
+    <Key>
+      <PropertyRef Name="UserID" />
+    </Key>
+    <Property Name="UserID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Login" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="Password" Type="varchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="RequiredFormations">
+    <Key>
+      <PropertyRef Name="JobID" />
+      <PropertyRef Name="FormationID" />
+    </Key>
+    <Property Name="JobID" Type="int" Nullable="false" />
+    <Property Name="FormationID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Session">
+    <Key>
+      <PropertyRef Name="SessionID" />
+    </Key>
+    <Property Name="SessionID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FormationID" Type="int" Nullable="false" />
+    <Property Name="DateStart" Type="datetime" Nullable="false" />
+    <Property Name="DateEnd" Type="datetime" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_AcquiredFormation_EmployeeID">
+    <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
+    <End Role="AcquiredFormation" Type="Self.AcquiredFormation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="EmployeeID" />
+      </Principal>
+      <Dependent Role="AcquiredFormation">
+        <PropertyRef Name="EmployeeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AcquiredFormation_FormationID">
+    <End Role="Formation" Type="Self.Formation" Multiplicity="1" />
+    <End Role="AcquiredFormation" Type="Self.AcquiredFormation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Formation">
+        <PropertyRef Name="FormationID" />
+      </Principal>
+      <Dependent Role="AcquiredFormation">
+        <PropertyRef Name="FormationID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EmployeeSession_EmployeeID">
+    <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
+    <End Role="EmployeeSession" Type="Self.EmployeeSession" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="EmployeeID" />
+      </Principal>
+      <Dependent Role="EmployeeSession">
+        <PropertyRef Name="EmployeeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EmployeeSession_SessionID">
+    <End Role="Session" Type="Self.Session" Multiplicity="1" />
+    <End Role="EmployeeSession" Type="Self.EmployeeSession" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Session">
+        <PropertyRef Name="SessionID" />
+      </Principal>
+      <Dependent Role="EmployeeSession">
+        <PropertyRef Name="SessionID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FormationID">
+    <End Role="Formation" Type="Self.Formation" Multiplicity="1" />
+    <End Role="Session" Type="Self.Session" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Formation">
+        <PropertyRef Name="FormationID" />
+      </Principal>
+      <Dependent Role="Session">
+        <PropertyRef Name="FormationID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_JobID">
+    <End Role="Job" Type="Self.Job" Multiplicity="1" />
+    <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Job">
+        <PropertyRef Name="JobID" />
+      </Principal>
+      <Dependent Role="Employee">
+        <PropertyRef Name="JobID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RequiredFormations_Formation">
+    <End Role="Formation" Type="Self.Formation" Multiplicity="1" />
+    <End Role="RequiredFormations" Type="Self.RequiredFormations" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Formation">
+        <PropertyRef Name="FormationID" />
+      </Principal>
+      <Dependent Role="RequiredFormations">
+        <PropertyRef Name="FormationID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RequiredFormations_Job">
+    <End Role="Job" Type="Self.Job" Multiplicity="1" />
+    <End Role="RequiredFormations" Type="Self.RequiredFormations" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Job">
+        <PropertyRef Name="JobID" />
+      </Principal>
+      <Dependent Role="RequiredFormations">
+        <PropertyRef Name="JobID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="AirAtlantiqueDRHModelStoreContainer">
+    <EntitySet Name="AcquiredFormation" EntityType="Self.AcquiredFormation" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Employee" EntityType="Self.Employee" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="EmployeeSession" EntityType="Self.EmployeeSession" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Formation" EntityType="Self.Formation" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Job" EntityType="Self.Job" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Login" EntityType="Self.Login" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="RequiredFormations" EntityType="Self.RequiredFormations" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Session" EntityType="Self.Session" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_AcquiredFormation_EmployeeID" Association="Self.FK_AcquiredFormation_EmployeeID">
+      <End Role="Employee" EntitySet="Employee" />
+      <End Role="AcquiredFormation" EntitySet="AcquiredFormation" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AcquiredFormation_FormationID" Association="Self.FK_AcquiredFormation_FormationID">
+      <End Role="Formation" EntitySet="Formation" />
+      <End Role="AcquiredFormation" EntitySet="AcquiredFormation" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EmployeeSession_EmployeeID" Association="Self.FK_EmployeeSession_EmployeeID">
+      <End Role="Employee" EntitySet="Employee" />
+      <End Role="EmployeeSession" EntitySet="EmployeeSession" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EmployeeSession_SessionID" Association="Self.FK_EmployeeSession_SessionID">
+      <End Role="Session" EntitySet="Session" />
+      <End Role="EmployeeSession" EntitySet="EmployeeSession" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FormationID" Association="Self.FK_FormationID">
+      <End Role="Formation" EntitySet="Formation" />
+      <End Role="Session" EntitySet="Session" />
+    </AssociationSet>
+    <AssociationSet Name="FK_JobID" Association="Self.FK_JobID">
+      <End Role="Job" EntitySet="Job" />
+      <End Role="Employee" EntitySet="Employee" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RequiredFormations_Formation" Association="Self.FK_RequiredFormations_Formation">
+      <End Role="Formation" EntitySet="Formation" />
+      <End Role="RequiredFormations" EntitySet="RequiredFormations" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RequiredFormations_Job" Association="Self.FK_RequiredFormations_Job">
+      <End Role="Job" EntitySet="Job" />
+      <End Role="RequiredFormations" EntitySet="RequiredFormations" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

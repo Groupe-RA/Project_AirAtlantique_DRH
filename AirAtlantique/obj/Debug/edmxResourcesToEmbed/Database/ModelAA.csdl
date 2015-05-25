@@ -1,0 +1,139 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="airatlantiqueModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="catalogueformation">
+    <Key>
+      <PropertyRef Name="idFormation" />
+    </Key>
+    <Property Name="idFormation" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NomFormation" Type="String" MaxLength="64" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Active" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="formationsaquises" Relationship="Self.FormationsAquises_ibfk_2" FromRole="catalogueformation" ToRole="formationsaquises" />
+    <NavigationProperty Name="session" Relationship="Self.Session_ibfk_2" FromRole="catalogueformation" ToRole="session" />
+  </EntityType>
+  <EntityType Name="fonction">
+    <Key>
+      <PropertyRef Name="idFonction" />
+    </Key>
+    <Property Name="idFonction" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NomFonction" Type="String" MaxLength="64" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="employe" Relationship="airatlantiqueModel.Employé_ibfk_11" FromRole="fonction" ToRole="employe" />
+  </EntityType>
+  <EntityType Name="session">
+    <Key>
+      <PropertyRef Name="idSession" />
+    </Key>
+    <Property Name="idSession" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="idFormation" Type="Int32" Nullable="false" />
+    <Property Name="DateDebut" Type="DateTime" Nullable="false" />
+    <Property Name="DateFin" Type="DateTime" Nullable="false" />
+    <NavigationProperty Name="catalogueformation" Relationship="Self.Session_ibfk_2" FromRole="session" ToRole="catalogueformation" />
+    <NavigationProperty Name="employe" Relationship="airatlantiqueModel.inscrits1" FromRole="session" ToRole="employe" />
+  </EntityType>
+  <EntityType Name="formationsaquises">
+    <Key>
+      <PropertyRef Name="idEmployé" />
+      <PropertyRef Name="idFormation" />
+      <PropertyRef Name="datePeremption" />
+    </Key>
+    <Property Name="idEmployé" Type="Int32" Nullable="false" />
+    <Property Name="idFormation" Type="Int32" Nullable="false" />
+    <Property Name="datePeremption" Type="DateTime" Nullable="false" />
+    <NavigationProperty Name="catalogueformation" Relationship="Self.FormationsAquises_ibfk_2" FromRole="formationsaquises" ToRole="catalogueformation" />
+    <NavigationProperty Name="employe" Relationship="airatlantiqueModel.FormationsAquises_ibfk_11" FromRole="formationsaquises" ToRole="employe" />
+  </EntityType>
+  <Association Name="FormationsAquises_ibfk_2">
+    <End Role="catalogueformation" Type="Self.catalogueformation" Multiplicity="1" />
+    <End Role="formationsaquises" Type="Self.formationsaquises" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="catalogueformation">
+        <PropertyRef Name="idFormation" />
+      </Principal>
+      <Dependent Role="formationsaquises">
+        <PropertyRef Name="idFormation" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Session_ibfk_2">
+    <End Role="catalogueformation" Type="Self.catalogueformation" Multiplicity="1" />
+    <End Role="session" Type="Self.session" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="catalogueformation">
+        <PropertyRef Name="idFormation" />
+      </Principal>
+      <Dependent Role="session">
+        <PropertyRef Name="idFormation" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="airatlantiqueEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="catalogueformation" EntityType="Self.catalogueformation" />
+    <EntitySet Name="fonction" EntityType="Self.fonction" />
+    <EntitySet Name="session" EntityType="Self.session" />
+    <EntitySet Name="formationsaquises" EntityType="Self.formationsaquises" />
+    <AssociationSet Name="FormationsAquises_ibfk_2" Association="Self.FormationsAquises_ibfk_2">
+      <End Role="catalogueformation" EntitySet="catalogueformation" />
+      <End Role="formationsaquises" EntitySet="formationsaquises" />
+    </AssociationSet>
+    <AssociationSet Name="Session_ibfk_2" Association="Self.Session_ibfk_2">
+      <End Role="catalogueformation" EntitySet="catalogueformation" />
+      <End Role="session" EntitySet="session" />
+    </AssociationSet>
+    <EntitySet Name="employe" EntityType="airatlantiqueModel.employe" />
+    <AssociationSet Name="Employé_ibfk_11" Association="airatlantiqueModel.Employé_ibfk_11">
+      <End Role="fonction" EntitySet="fonction" />
+      <End Role="employe" EntitySet="employe" />
+    </AssociationSet>
+    <AssociationSet Name="FormationsAquises_ibfk_11" Association="airatlantiqueModel.FormationsAquises_ibfk_11">
+      <End Role="employe" EntitySet="employe" />
+      <End Role="formationsaquises" EntitySet="formationsaquises" />
+    </AssociationSet>
+    <AssociationSet Name="inscrits1" Association="airatlantiqueModel.inscrits1">
+      <End Role="employe" EntitySet="employe" />
+      <End Role="session" EntitySet="session" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="employe">
+    <Key>
+      <PropertyRef Name="idEmployé" />
+    </Key>
+    <Property Name="idEmployé" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nom" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="false" />
+    <Property Name="Prénom" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="false" />
+    <Property Name="Statut" Type="String" Nullable="false" MaxLength="65532" FixedLength="false" Unicode="false" />
+    <Property Name="Salaire" Type="Int32" Nullable="false" />
+    <Property Name="Sexe" Type="String" Nullable="false" MaxLength="65532" FixedLength="false" Unicode="false" />
+    <Property Name="dateNaissance" Type="DateTime" Nullable="false" />
+    <Property Name="idFonction" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="fonction" Relationship="airatlantiqueModel.Employé_ibfk_11" FromRole="employe" ToRole="fonction" />
+    <NavigationProperty Name="formationsaquises" Relationship="airatlantiqueModel.FormationsAquises_ibfk_11" FromRole="employe" ToRole="formationsaquises" />
+    <NavigationProperty Name="session" Relationship="airatlantiqueModel.inscrits1" FromRole="employe" ToRole="session" />
+  </EntityType>
+  <Association Name="Employé_ibfk_11">
+    <End Type="airatlantiqueModel.fonction" Role="fonction" Multiplicity="1" />
+    <End Type="airatlantiqueModel.employe" Role="employe" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="fonction">
+        <PropertyRef Name="idFonction" />
+      </Principal>
+      <Dependent Role="employe">
+        <PropertyRef Name="idFonction" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FormationsAquises_ibfk_11">
+    <End Type="airatlantiqueModel.employe" Role="employe" Multiplicity="1" />
+    <End Type="airatlantiqueModel.formationsaquises" Role="formationsaquises" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="employe">
+        <PropertyRef Name="idEmployé" />
+      </Principal>
+      <Dependent Role="formationsaquises">
+        <PropertyRef Name="idEmployé" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="inscrits1">
+    <End Type="airatlantiqueModel.employe" Role="employe" Multiplicity="*" />
+    <End Type="airatlantiqueModel.session" Role="session" Multiplicity="*" />
+  </Association>
+</Schema>

@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="AirAtlantiqueDRHModelStoreContainer" CdmEntityContainer="AirAtlantiqueDRHEntities">
+    <EntitySetMapping Name="AcquiredFormation">
+      <EntityTypeMapping TypeName="AirAtlantiqueDRHModel.AcquiredFormation">
+        <MappingFragment StoreEntitySet="AcquiredFormation">
+          <ScalarProperty Name="AcquiredID" ColumnName="AcquiredID" />
+          <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+          <ScalarProperty Name="FormationID" ColumnName="FormationID" />
+          <ScalarProperty Name="AcquiredDate" ColumnName="AcquiredDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Employee">
+      <EntityTypeMapping TypeName="AirAtlantiqueDRHModel.Employee">
+        <MappingFragment StoreEntitySet="Employee">
+          <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="JobID" ColumnName="JobID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Formation">
+      <EntityTypeMapping TypeName="AirAtlantiqueDRHModel.Formation">
+        <MappingFragment StoreEntitySet="Formation">
+          <ScalarProperty Name="FormationDescription" ColumnName="FormationDescription" />
+          <ScalarProperty Name="FormationID" ColumnName="FormationID" />
+          <ScalarProperty Name="FormationName" ColumnName="FormationName" />
+          <ScalarProperty Name="ValidityDuration" ColumnName="ValidityDuration" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Job">
+      <EntityTypeMapping TypeName="AirAtlantiqueDRHModel.Job">
+        <MappingFragment StoreEntitySet="Job">
+          <ScalarProperty Name="JobID" ColumnName="JobID" />
+          <ScalarProperty Name="JobName" ColumnName="JobName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Login">
+      <EntityTypeMapping TypeName="AirAtlantiqueDRHModel.Login">
+        <MappingFragment StoreEntitySet="Login">
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="Login1" ColumnName="Login" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Session">
+      <EntityTypeMapping TypeName="AirAtlantiqueDRHModel.Session">
+        <MappingFragment StoreEntitySet="Session">
+          <ScalarProperty Name="SessionID" ColumnName="SessionID" />
+          <ScalarProperty Name="FormationID" ColumnName="FormationID" />
+          <ScalarProperty Name="DateStart" ColumnName="DateStart" />
+          <ScalarProperty Name="DateEnd" ColumnName="DateEnd" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="EmployeeSession" TypeName="AirAtlantiqueDRHModel.EmployeeSession" StoreEntitySet="EmployeeSession">
+      <EndProperty Name="Employee">
+        <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+      </EndProperty>
+      <EndProperty Name="Session">
+        <ScalarProperty Name="SessionID" ColumnName="SessionID" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="RequiredFormations" TypeName="AirAtlantiqueDRHModel.RequiredFormations" StoreEntitySet="RequiredFormations">
+      <EndProperty Name="Job">
+        <ScalarProperty Name="JobID" ColumnName="JobID" />
+      </EndProperty>
+      <EndProperty Name="Formation">
+        <ScalarProperty Name="FormationID" ColumnName="FormationID" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping>

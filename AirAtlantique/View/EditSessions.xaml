@@ -1,0 +1,74 @@
+﻿<UserControl x:Class="AirAtlantique.EditSessions"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="800" d:DesignWidth="1200" Background="#FF2D2D2D" BorderBrush="#FF0088FF" BorderThickness="1,1,1,1">
+    <Grid Margin="0,0,0,0" Width="auto" Height="auto">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="60*"/>
+            <ColumnDefinition Width="1080*"/>
+            <ColumnDefinition Width="60*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="26*"/>
+            <RowDefinition Height="241*"/>
+        </Grid.RowDefinitions>
+        <TextBlock HorizontalAlignment="Center" Grid.Row="0" TextWrapping="Wrap" VerticalAlignment="Top" Height="34" Width="170" FontSize="24" Grid.Column="1" Foreground="White"><Run Language="fr-fr" Text="Gérer Sessions"/></TextBlock>
+        <Button Content="←" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="33" Height="35" Background="{x:Null}" FontSize="36" Padding="1,-11,1,1" Click="Button_Click_1" Foreground="White"/>
+        <ListView x:Name="EditSessionListView" AlternationCount="2" Height="634" Margin="0,2,0,0" VerticalAlignment="Top" Width="Auto" Grid.Row="1" Grid.Column="1" Background="#FF181818" GridViewColumnHeader.Click="GridViewColumnHeaderClickedHandler">
+            <ListView.ItemContainerStyle>
+                <Style TargetType="ListViewItem">
+                    <Style.Triggers>
+                            <Trigger Property="ItemsControl.AlternationIndex" Value="0">
+                                <Setter Property="Background" Value="#1c1c1c"></Setter>
+                            </Trigger>
+                            <Trigger Property="ItemsControl.AlternationIndex" Value="1">
+                                <Setter Property="Background" Value="#3e3e42"></Setter>
+                            </Trigger>
+                        <Trigger Property="Control.IsMouseOver" Value="True">
+                            <Setter Property="Control.Background" Value="#FF0088FF" />
+                        </Trigger>
+                    </Style.Triggers>
+                    <Setter Property="FontSize" Value="14" />
+                    <Setter Property="Foreground" Value="#FFF" />
+                    <Setter Property="FontWeight" Value="Bold" />
+                </Style>
+            </ListView.ItemContainerStyle>
+            <ListView.View>
+                <GridView >
+                    <GridView.ColumnHeaderContainerStyle>
+                        <Style TargetType="{x:Type GridViewColumnHeader}">
+                            <Setter Property="Background" Value="#292929"/>
+                            <Setter Property="BorderBrush" Value="#FF0088FF"/>
+                            <Setter Property="TextElement.Foreground" Value="White"/>
+                            <!--<Setter Property="IsHitTestVisible" Value="False" />-->
+                        </Style>
+                    </GridView.ColumnHeaderContainerStyle>
+                    <GridViewColumn Width="200" Header="Nom Formation" DisplayMemberBinding="{Binding FormationSession}" />
+                    <GridViewColumn Width="200" Header="Employes participant">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <ItemsControl ItemsSource="{Binding EmployesParticipants}" />
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Width="200" Header="Date début" DisplayMemberBinding="{Binding DateDebut}"/>
+                    <GridViewColumn Width="200" Header="Date fin" DisplayMemberBinding="{Binding DateFin}" />
+                    <GridViewColumn Width="100" Header="Status" DisplayMemberBinding="{Binding Status}" />
+                    <GridViewColumn Width="90" Header="Edition">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <StackPanel>
+                                    <Button Content="Modifier" Click="ActionModifier" Background="#FF5D5D5D" Foreground="White"/>
+                                    <Button Content="Supprimer" Click="ActionSupprimer" Background="#FF5D5D5D" Foreground="White"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                </GridView>
+            </ListView.View>
+        </ListView>
+    </Grid>
+</UserControl>

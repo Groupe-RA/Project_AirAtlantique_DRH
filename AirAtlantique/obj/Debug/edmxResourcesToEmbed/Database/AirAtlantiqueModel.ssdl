@@ -1,0 +1,177 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="airatlantiqueModel.Store" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.6" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="catalogueformation">
+    <Key>
+      <PropertyRef Name="idFormation" />
+    </Key>
+    <Property Name="idFormation" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NomFormation" Type="varchar" MaxLength="64" Nullable="false" />
+    <Property Name="Active" Type="bool" Nullable="false" />
+  </EntityType>
+  <EntityType Name="employe">
+    <Key>
+      <PropertyRef Name="idEmployé" />
+    </Key>
+    <Property Name="idEmployé" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nom" Type="varchar" MaxLength="64" Nullable="false" />
+    <Property Name="Prénom" Type="varchar" MaxLength="64" Nullable="false" />
+    <Property Name="Statut" Type="enum" Nullable="false" />
+    <Property Name="Salaire" Type="int" Nullable="false" />
+    <Property Name="Sexe" Type="enum" Nullable="false" />
+    <Property Name="dateNaissance" Type="date" Nullable="false" />
+    <Property Name="idFonction" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="fonction">
+    <Key>
+      <PropertyRef Name="idFonction" />
+    </Key>
+    <Property Name="idFonction" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NomFonction" Type="varchar" MaxLength="64" Nullable="false" />
+  </EntityType>
+  <!--Erreurs détectées durant la génération :
+avertissement 6002: La table/vue 'def.airatlantique.formationsaquises' n'a pas de clé primaire définie. La clé a été déduite et la définition a été créée en tant que table/vue en lecture seule.-->
+  <EntityType Name="formationsaquises">
+    <Key>
+      <PropertyRef Name="idEmployé" />
+      <PropertyRef Name="idFormation" />
+      <PropertyRef Name="datePeremption" />
+    </Key>
+    <Property Name="idEmployé" Type="int" Nullable="false" />
+    <Property Name="idFormation" Type="int" Nullable="false" />
+    <Property Name="datePeremption" Type="date" Nullable="false" />
+  </EntityType>
+  <!--Erreurs détectées durant la génération :
+avertissement 6002: La table/vue 'def.airatlantique.inscrits' n'a pas de clé primaire définie. La clé a été déduite et la définition a été créée en tant que table/vue en lecture seule.-->
+  <EntityType Name="inscrits">
+    <Key>
+      <PropertyRef Name="idEmploye" />
+      <PropertyRef Name="idSession" />
+    </Key>
+    <Property Name="idEmploye" Type="int" Nullable="false" />
+    <Property Name="idSession" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="session">
+    <Key>
+      <PropertyRef Name="idSession" />
+    </Key>
+    <Property Name="idSession" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="idFormation" Type="int" Nullable="false" />
+    <Property Name="DateDebut" Type="date" Nullable="false" />
+    <Property Name="DateFin" Type="date" Nullable="false" />
+  </EntityType>
+  <Association Name="Employé_ibfk_1">
+    <End Role="fonction" Type="Self.fonction" Multiplicity="1" />
+    <End Role="employe" Type="Self.employe" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="fonction">
+        <PropertyRef Name="idFonction" />
+      </Principal>
+      <Dependent Role="employe">
+        <PropertyRef Name="idFonction" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FormationsAquises_ibfk_1">
+    <End Role="employe" Type="Self.employe" Multiplicity="1" />
+    <End Role="formationsaquises" Type="Self.formationsaquises" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="employe">
+        <PropertyRef Name="idEmployé" />
+      </Principal>
+      <Dependent Role="formationsaquises">
+        <PropertyRef Name="idEmployé" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FormationsAquises_ibfk_2">
+    <End Role="catalogueformation" Type="Self.catalogueformation" Multiplicity="1" />
+    <End Role="formationsaquises" Type="Self.formationsaquises" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="catalogueformation">
+        <PropertyRef Name="idFormation" />
+      </Principal>
+      <Dependent Role="formationsaquises">
+        <PropertyRef Name="idFormation" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Inscrits_ibfk_1">
+    <End Role="employe" Type="Self.employe" Multiplicity="1" />
+    <End Role="inscrits" Type="Self.inscrits" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="employe">
+        <PropertyRef Name="idEmployé" />
+      </Principal>
+      <Dependent Role="inscrits">
+        <PropertyRef Name="idEmploye" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Inscrits_ibfk_2">
+    <End Role="session" Type="Self.session" Multiplicity="1" />
+    <End Role="inscrits" Type="Self.inscrits" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="session">
+        <PropertyRef Name="idSession" />
+      </Principal>
+      <Dependent Role="inscrits">
+        <PropertyRef Name="idSession" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Session_ibfk_2">
+    <End Role="catalogueformation" Type="Self.catalogueformation" Multiplicity="1" />
+    <End Role="session" Type="Self.session" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="catalogueformation">
+        <PropertyRef Name="idFormation" />
+      </Principal>
+      <Dependent Role="session">
+        <PropertyRef Name="idFormation" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="airatlantiqueModelStoreContainer">
+    <EntitySet Name="catalogueformation" EntityType="Self.catalogueformation" Schema="airatlantique" store:Type="Tables" />
+    <EntitySet Name="employe" EntityType="Self.employe" Schema="airatlantique" store:Type="Tables" />
+    <EntitySet Name="fonction" EntityType="Self.fonction" Schema="airatlantique" store:Type="Tables" />
+    <EntitySet Name="session" EntityType="Self.session" Schema="airatlantique" store:Type="Tables" />
+    <EntitySet Name="formationsaquises" EntityType="Self.formationsaquises" store:Type="Tables" store:Schema="airatlantique">
+      <DefiningQuery>SELECT
+`formationsaquises`.`idEmployé`, 
+`formationsaquises`.`idFormation`, 
+`formationsaquises`.`datePeremption`
+FROM `formationsaquises` AS `formationsaquises`</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="inscrits" EntityType="Self.inscrits" store:Type="Tables" store:Schema="airatlantique">
+      <DefiningQuery>SELECT
+`inscrits`.`idEmploye`, 
+`inscrits`.`idSession`
+FROM `inscrits` AS `inscrits`</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="Employé_ibfk_1" Association="Self.Employé_ibfk_1">
+      <End Role="fonction" EntitySet="fonction" />
+      <End Role="employe" EntitySet="employe" />
+    </AssociationSet>
+    <AssociationSet Name="FormationsAquises_ibfk_1" Association="Self.FormationsAquises_ibfk_1">
+      <End Role="employe" EntitySet="employe" />
+      <End Role="formationsaquises" EntitySet="formationsaquises" />
+    </AssociationSet>
+    <AssociationSet Name="FormationsAquises_ibfk_2" Association="Self.FormationsAquises_ibfk_2">
+      <End Role="catalogueformation" EntitySet="catalogueformation" />
+      <End Role="formationsaquises" EntitySet="formationsaquises" />
+    </AssociationSet>
+    <AssociationSet Name="Inscrits_ibfk_1" Association="Self.Inscrits_ibfk_1">
+      <End Role="employe" EntitySet="employe" />
+      <End Role="inscrits" EntitySet="inscrits" />
+    </AssociationSet>
+    <AssociationSet Name="Inscrits_ibfk_2" Association="Self.Inscrits_ibfk_2">
+      <End Role="session" EntitySet="session" />
+      <End Role="inscrits" EntitySet="inscrits" />
+    </AssociationSet>
+    <AssociationSet Name="Session_ibfk_2" Association="Self.Session_ibfk_2">
+      <End Role="catalogueformation" EntitySet="catalogueformation" />
+      <End Role="session" EntitySet="session" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

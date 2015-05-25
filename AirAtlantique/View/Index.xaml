@@ -1,0 +1,53 @@
+﻿<UserControl x:Class="AirAtlantique.Index"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="800" d:DesignWidth="800" Background="#FF2D2D2D" BorderBrush="#FF0088FF" BorderThickness="1,1,1,1">
+    <Grid Margin="0,0,0,0" Width="800" Height="800">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="179*"/>
+            <RowDefinition Height="221*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="618*"/>
+            <ColumnDefinition Width="617*"/>
+        </Grid.ColumnDefinitions>
+        <Button Margin="0,0,34,26" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="330" Height="164" Click="Button_Click_1">
+            <StackPanel Width="{Binding RelativeSource={RelativeSource FindAncestor,AncestorType={x:Type Button}},Path=ActualWidth}" Height="{Binding RelativeSource={RelativeSource FindAncestor,AncestorType={x:Type Button}},Path=ActualHeight}" Orientation="Horizontal">
+                <Image Source="../Images/Gerer_Formation.png" Width="156" HorizontalAlignment="Left" Margin="0,10" VerticalAlignment="Center" Height="144"/>
+                <TextBlock TextWrapping="Wrap" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,52,0,29" Width="152" Height="83"><Run Language="fr-fr" Text="Gérer les formations" FontSize="24"/></TextBlock>
+            </StackPanel>
+        </Button>
+        <Button Margin="25,0,0,26" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="330" Height="164" Click="Button_Click_2" Grid.Column="1">
+            <StackPanel Width="{Binding RelativeSource={RelativeSource FindAncestor,AncestorType={x:Type Button}},Path=ActualWidth}" Height="{Binding RelativeSource={RelativeSource FindAncestor,AncestorType={x:Type Button}},Path=ActualHeight}" Orientation="Horizontal">
+                <Image Source="../Images/Nouvelle_Session.png" Width="156" HorizontalAlignment="Left" Margin="0,10" VerticalAlignment="Center" Height="144"/>
+                <TextBlock TextWrapping="Wrap" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,52,0,29" Width="152" Height="83"><Run Language="fr-fr" Text="Nouvelle session" FontSize="24"/></TextBlock>
+            </StackPanel>
+        </Button>
+        <Button Content="Gérer Sessions" HorizontalAlignment="Left" Margin="25,45,0,0" VerticalAlignment="Top" Width="330" Height="164" FontSize="24" Click="Button_Click_4" Grid.Row="1" Grid.Column="1"></Button>
+        <Button Margin="25,45,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="330" Height="164" Click="Button_Click_4" Grid.Row="1" Grid.Column="1">
+            <StackPanel Width="{Binding RelativeSource={RelativeSource FindAncestor,AncestorType={x:Type Button}},Path=ActualWidth}" Height="{Binding RelativeSource={RelativeSource FindAncestor,AncestorType={x:Type Button}},Path=ActualHeight}" Orientation="Horizontal">
+                <Image Source="../Images/Gerer_Session.png" Width="156" HorizontalAlignment="Left" Margin="0,10" VerticalAlignment="Center" Height="144"/>
+                <TextBlock TextWrapping="Wrap" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,52,0,29" Width="142" Height="83"><Run Language="fr-fr" Text="Gérer sessions" FontSize="24"/></TextBlock>
+            </StackPanel>
+        </Button>
+        <Button Margin="0,45,34,0" HorizontalAlignment="Right" VerticalAlignment="Top" Width="330" Height="164" Click="Button_Click_3" Grid.Row="1">
+            <StackPanel Width="{Binding RelativeSource={RelativeSource FindAncestor,AncestorType={x:Type Button}},Path=ActualWidth}" Height="{Binding RelativeSource={RelativeSource FindAncestor,AncestorType={x:Type Button}},Path=ActualHeight}" Orientation="Horizontal">
+                <Image Source="../Images/Gerer_Employe.png" Width="156" HorizontalAlignment="Left" Margin="0,10" VerticalAlignment="Center" Height="144"/>
+                <TextBlock TextWrapping="Wrap" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,52,0,29" Width="152" Height="83"><Run Language="fr-fr" Text="Gérer employés" FontSize="24"/></TextBlock>
+            </StackPanel>
+        </Button>
+        <StackPanel Grid.Column="1" Orientation="Horizontal" Height="50" VerticalAlignment="Top" FlowDirection="RightToLeft" Margin="0,0,20,0">
+            <Button x:Name="Logout" Width="40" Height="40" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" Margin="0,0,10,0" Click="Logout_Click">
+                <Image Source="../Images/logout.png" Width="30" VerticalAlignment="Center" Height="30" />
+            </Button>
+            <TextBlock x:Name="Login" VerticalAlignment="Center" Padding="0" Text="LOGIN" Foreground="White"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Grid.ColumnSpan="2" Height="100" VerticalAlignment="Top">
+            <Image Source="../Images/logoAA.png" Width="100" VerticalAlignment="Top" Height="100" HorizontalAlignment="Left" Margin="40,0,0,0" />
+            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Margin="20,30,0,0"><Run Language="fr-fr" Text="AirAtlantique DRH Manager" FontSize="30" Foreground="White"/></TextBlock>
+        </StackPanel>
+    </Grid>
+</UserControl>

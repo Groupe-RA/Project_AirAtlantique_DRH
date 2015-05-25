@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="airatlantiqueModelStoreContainer" CdmEntityContainer="airatlantiqueEntities">
+    <EntitySetMapping Name="catalogueformation">
+      <EntityTypeMapping TypeName="airatlantiqueModel.catalogueformation">
+        <MappingFragment StoreEntitySet="catalogueformation">
+          <ScalarProperty Name="idFormation" ColumnName="idFormation" />
+          <ScalarProperty Name="NomFormation" ColumnName="NomFormation" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="employe">
+      <EntityTypeMapping TypeName="airatlantiqueModel.employe">
+        <MappingFragment StoreEntitySet="employe">
+          <ScalarProperty Name="idEmployé" ColumnName="idEmployé" />
+          <ScalarProperty Name="Nom" ColumnName="Nom" />
+          <ScalarProperty Name="Prénom" ColumnName="Prénom" />
+          <ScalarProperty Name="Statut" ColumnName="Statut" />
+          <ScalarProperty Name="Salaire" ColumnName="Salaire" />
+          <ScalarProperty Name="Sexe" ColumnName="Sexe" />
+          <ScalarProperty Name="dateNaissance" ColumnName="dateNaissance" />
+          <ScalarProperty Name="idFonction" ColumnName="idFonction" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="fonction">
+      <EntityTypeMapping TypeName="airatlantiqueModel.fonction">
+        <MappingFragment StoreEntitySet="fonction">
+          <ScalarProperty Name="idFonction" ColumnName="idFonction" />
+          <ScalarProperty Name="NomFonction" ColumnName="NomFonction" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="session">
+      <EntityTypeMapping TypeName="airatlantiqueModel.session">
+        <MappingFragment StoreEntitySet="session">
+          <ScalarProperty Name="idSession" ColumnName="idSession" />
+          <ScalarProperty Name="idFormation" ColumnName="idFormation" />
+          <ScalarProperty Name="DateDebut" ColumnName="DateDebut" />
+          <ScalarProperty Name="DateFin" ColumnName="DateFin" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="formationsaquises">
+      <EntityTypeMapping TypeName="airatlantiqueModel.formationsaquises">
+        <MappingFragment StoreEntitySet="formationsaquises">
+          <ScalarProperty Name="idEmployé" ColumnName="idEmployé" />
+          <ScalarProperty Name="idFormation" ColumnName="idFormation" />
+          <ScalarProperty Name="datePeremption" ColumnName="datePeremption" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="inscrits" TypeName="airatlantiqueModel.inscrits" StoreEntitySet="inscrits">
+      <EndProperty Name="employe">
+        <ScalarProperty Name="idEmployé" ColumnName="idEmploye" />
+      </EndProperty>
+      <EndProperty Name="session">
+        <ScalarProperty Name="idSession" ColumnName="idSession" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping>
