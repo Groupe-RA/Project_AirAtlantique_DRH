@@ -39,6 +39,7 @@
           <Property Name="FormationName" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="ValidityDuration" Type="int" Nullable="false" />
           <Property Name="FormationDescription" Type="text" Nullable="false" />
+          <Property Name="Active" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="Job">
           <Key>
@@ -248,6 +249,7 @@
           <NavigationProperty Name="Session" Relationship="Self.FK_FormationID" FromRole="Formation" ToRole="Session" />
           <Property Name="FormationDescription" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Job" Relationship="AirAtlantiqueDRHModel.RequiredFormations" FromRole="Formation" ToRole="Job" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
         </EntityType>
         <EntityType Name="Job">
           <Key>
@@ -394,6 +396,7 @@
           <EntitySetMapping Name="Formation">
             <EntityTypeMapping TypeName="AirAtlantiqueDRHModel.Formation">
               <MappingFragment StoreEntitySet="Formation">
+                <ScalarProperty Name="Active" ColumnName="Active" />
                 <ScalarProperty Name="FormationDescription" ColumnName="FormationDescription" />
                 <ScalarProperty Name="FormationID" ColumnName="FormationID" />
                 <ScalarProperty Name="FormationName" ColumnName="FormationName" />

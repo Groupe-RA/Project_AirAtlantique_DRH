@@ -8,15 +8,6 @@ FontFamily="Segoe UI"
 Background="Transparent"
 AllowsTransparency="True">
     <Grid x:Name="RootGrid">
-        <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="4">
-            <StackPanel.Resources>
-                <Style TargetType="TextBlock">
-                    <Setter Property="Foreground" Value="White" />
-                    <Setter Property="FontFamily" Value="Marlett" />
-                </Style>
-            </StackPanel.Resources>
-            <TextBlock Text="r" />
-        </StackPanel>
         <ContentControl x:Name="contentControl" Grid.Row="1"/>
     </Grid>
 </Window>

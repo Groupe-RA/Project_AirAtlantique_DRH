@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using AirAtlantique.View;
 
 namespace AirAtlantique
 {
@@ -22,11 +23,13 @@ namespace AirAtlantique
     {
         public MainWindow()
         {
+            
             InitializeComponent();
 
             MouseDown += Button_MouseDown;
-            this.contentControl.Content = new Index();       
+            this.contentControl.Content = new Login();
         }
+
 
         private void Button_MouseDown(object sender, MouseButtonEventArgs e)
         {
@@ -34,6 +37,11 @@ namespace AirAtlantique
             {
                 DragMove();
             }
+        }
+
+        private void End_Click(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
         }
 
     }

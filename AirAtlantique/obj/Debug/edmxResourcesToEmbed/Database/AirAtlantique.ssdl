@@ -34,6 +34,7 @@
     <Property Name="FormationName" Type="varchar" MaxLength="100" Nullable="false" />
     <Property Name="ValidityDuration" Type="int" Nullable="false" />
     <Property Name="FormationDescription" Type="text" Nullable="false" />
+    <Property Name="Active" Type="bit" Nullable="false" />
   </EntityType>
   <EntityType Name="Job">
     <Key>

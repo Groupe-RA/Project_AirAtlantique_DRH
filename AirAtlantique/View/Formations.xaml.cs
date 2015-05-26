@@ -29,6 +29,8 @@ namespace AirAtlantique
         {
             InitializeComponent();
 
+            Global.CenterWindow();
+
             Application.Current.MainWindow.Width = 900;
             Application.Current.MainWindow.Height = 500;
 
@@ -47,22 +49,38 @@ namespace AirAtlantique
         private void Ajouter_Click(object sender, RoutedEventArgs e)
         {
             // Sauvegarder
-            Class.Formation nouvelleFormation = new Class.Formation();
-
-            nouvelleFormation.Nom = NameBox.Text;
-            nouvelleFormation.Description = DescriptionBox.Text;
-            nouvelleFormation.DureeValidite = int.Parse(DurationBox.Text);
-            nouvelleFormation.RequiredForJobs = ListPostes.SelectedItems.Cast<Class.Jobs>().Select(x => x.Id);
-
-            formationdao.Save(nouvelleFormation);
-
             try
             {
+                Class.Formation nouvelleFormation = new Class.Formation();
 
+                if (String.IsNullOrEmpty(NameBox.Text) || String.IsNullOrEmpty(DescriptionBox.Text) || String.IsNullOrEmpty(DurationBox.Text))
+                    throw new Exception("Certains champs ne sont pas remplis");
+
+                nouvelleFormation.Nom = NameBox.Text;
+                nouvelleFormation.Description = DescriptionBox.Text;
+
+                int duree = 1;
+                bool isNumber = int.TryParse(DurationBox.Text, out duree);
+
+                if (!isNumber)
+                    throw new Exception("La durée de validité doit être un nombre");
+                else
+                    nouvelleFormation.DureeValidite = duree;
+
+                nouvelleFormation.RequiredForJobs = ListPostes.SelectedItems.Cast<Class.Jobs>().Select(x => x.Id);
+
+                formationdao.Save(nouvelleFormation);
+
+                result.Foreground = (SolidColorBrush)new BrushConverter().ConvertFromString("#FF37A416");
+                result.Text = "Ajout réussi";
+
+                ListFormations.ItemsSource = null;
+                ListFormations.ItemsSource = new FormationsVM().theFormations;
             }
-            catch(Exception erreur)
+            catch (Exception error)
             {
-
+                result.Foreground = (SolidColorBrush)new BrushConverter().ConvertFromString("#CC0033");
+                result.Text = error.Message;
             }
         }
 

@@ -24,6 +24,7 @@
     <EntitySetMapping Name="Formation">
       <EntityTypeMapping TypeName="AirAtlantiqueDRHModel.Formation">
         <MappingFragment StoreEntitySet="Formation">
+          <ScalarProperty Name="Active" ColumnName="Active" />
           <ScalarProperty Name="FormationDescription" ColumnName="FormationDescription" />
           <ScalarProperty Name="FormationID" ColumnName="FormationID" />
           <ScalarProperty Name="FormationName" ColumnName="FormationName" />

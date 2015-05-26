@@ -30,13 +30,13 @@ namespace AirAtlantique.Database
         }
 
         /// <summary>
-        /// Supprime la formation par son id
+        /// Supprime la formation par son id (en la rendant inactive pour conserver les sessions archivées)
         /// </summary>
         /// <param name="id"></param>
         public void DeleteById(int id)
         {
             var del = db.Formation.Where(x => x.FormationID == id).First();
-            db.Formation.Remove(del);
+            del.Active = false;
             db.SaveChanges();
         }
 
@@ -51,7 +51,8 @@ namespace AirAtlantique.Database
                 FormationName = aFormation.Nom,
                 FormationDescription = aFormation.Description,
                 ValidityDuration = aFormation.DureeValidite,
-                Job = jobdao.GetMultipleById(aFormation.RequiredForJobs)
+                Job = jobdao.GetMultipleById(aFormation.RequiredForJobs),
+                Active = true
             };
 
             db.Formation.Add(nouveau);

@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using AirAtlantique.View;
 
 namespace AirAtlantique
 {
@@ -26,9 +27,10 @@ namespace AirAtlantique
             Application.Current.MainWindow.Height = 700;
 
             InitializeComponent();
-            string test = Environment.GetCommandLineArgs().Last();
-            var lol = test.Substring(0, 50); 
-            Login.Text = lol;
+
+            Global.CenterWindow();
+            
+            Login.Text += Global.UserName.ToUpper();
             
         }
 
@@ -56,7 +58,7 @@ namespace AirAtlantique
 
         private void Logout_Click(object sender, RoutedEventArgs e)
         {
-            Application.Current.Shutdown();
+            Application.Current.MainWindow.Content = new Login();
         }
     }
 }

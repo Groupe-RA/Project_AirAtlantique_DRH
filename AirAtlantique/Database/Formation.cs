@@ -25,6 +25,7 @@ namespace AirAtlantique.Database
         public string FormationName { get; set; }
         public int ValidityDuration { get; set; }
         public string FormationDescription { get; set; }
+        public bool Active { get; set; }
     
         public virtual ICollection<AcquiredFormation> AcquiredFormation { get; set; }
         public virtual ICollection<Session> Session { get; set; }

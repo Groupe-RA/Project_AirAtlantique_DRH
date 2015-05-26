@@ -26,6 +26,8 @@ namespace AirAtlantique
         {
             InitializeComponent();
 
+            Global.CenterWindow();
+
             IEnumerable<Employes> donnees = new EmployesVM().theEmployes;
 
             EditSessionListView.ItemsSource = donnees;

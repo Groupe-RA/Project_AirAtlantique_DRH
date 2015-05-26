@@ -118,6 +118,8 @@
     </Compile>
     <Compile Include="Database\SessionsDao.cs" />
     <Compile Include="Database\SingletonDb.cs" />
+    <Compile Include="Database\UsersDao.cs" />
+    <Compile Include="Global.cs" />
     <Compile Include="ViewModel\JobVM.cs" />
     <Compile Include="View\EditSessions.xaml.cs">
       <DependentUpon>EditSessions.xaml</DependentUpon>
@@ -125,11 +127,11 @@
     <Compile Include="View\EmployesUI.xaml.cs">
       <DependentUpon>EmployesUI.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\Login.xaml.cs">
+      <DependentUpon>Login.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Sessions.xaml.cs">
       <DependentUpon>Sessions.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="test.xaml.cs">
-      <DependentUpon>test.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModel\EmployesVM.cs" />
     <Compile Include="ViewModel\FormationsVM.cs" />
@@ -147,6 +149,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Index.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Login.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -169,10 +175,6 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="View\Sessions.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="test.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

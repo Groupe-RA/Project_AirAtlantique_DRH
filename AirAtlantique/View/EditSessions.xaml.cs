@@ -33,12 +33,12 @@ namespace AirAtlantique
 
             /*EditSessionListView.Items.Add(new EmployesVM().theEmployes);
             this.DataContext = new EmployesVM().theEmployes;*/
+
+            Global.CenterWindow();
             
             IEnumerable<SessionView> donnees = new SessionsVM().theSessions;
 
             EditSessionListView.ItemsSource = donnees;
-            
-            
         }
 
         /// <summary>

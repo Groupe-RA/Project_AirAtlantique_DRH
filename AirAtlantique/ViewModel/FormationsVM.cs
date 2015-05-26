@@ -17,6 +17,7 @@ namespace AirAtlantique.ViewModel
             FormationsDao formationsdao = new FormationsDao();
 
             theFormations = from p in formationsdao.GetAll()
+                            where p.Active == true
                           select new Class.FormationView
                           {
                               Id = p.FormationID,

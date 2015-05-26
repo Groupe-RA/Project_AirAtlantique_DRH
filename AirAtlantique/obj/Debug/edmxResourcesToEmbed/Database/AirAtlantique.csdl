@@ -34,6 +34,7 @@
     <NavigationProperty Name="Session" Relationship="Self.FK_FormationID" FromRole="Formation" ToRole="Session" />
     <Property Name="FormationDescription" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="Job" Relationship="AirAtlantiqueDRHModel.RequiredFormations" FromRole="Formation" ToRole="Job" />
+    <Property Name="Active" Type="Boolean" Nullable="false" />
   </EntityType>
   <EntityType Name="Job">
     <Key>

@@ -9,7 +9,6 @@ D:\Bibliothèques\Documents\Visual Studio 2012\Projects\AirAtlantique\AirAtlanti
 D:\Bibliothèques\Documents\Visual Studio 2012\Projects\AirAtlantique\AirAtlantique\obj\Debug\AirAtlantique.csproj.GenerateResource.Cache
 D:\Bibliothèques\Documents\Visual Studio 2012\Projects\AirAtlantique\AirAtlantique\obj\Debug\AirAtlantique.exe
 D:\Bibliothèques\Documents\Visual Studio 2012\Projects\AirAtlantique\AirAtlantique\obj\Debug\AirAtlantique.pdb
-D:\Bibliothèques\Documents\Visual Studio 2012\Projects\AirAtlantique\AirAtlantique\obj\Debug\test.baml
 D:\Bibliothèques\Documents\Visual Studio 2012\Projects\AirAtlantique\AirAtlantique\bin\Debug\EntityFramework.dll
 D:\Bibliothèques\Documents\Visual Studio 2012\Projects\AirAtlantique\AirAtlantique\bin\Debug\EntityFramework.xml
 D:\Bibliothèques\Documents\Visual Studio 2012\Projects\AirAtlantique\AirAtlantique\bin\Debug\fr\EntityFramework.resources.dll
@@ -25,3 +24,8 @@ D:\Bibliothèques\Documents\Visual Studio 2012\Projects\AirAtlantique\AirAtlanti
 D:\Bibliothèques\Documents\Visual Studio 2012\Projects\AirAtlantique\AirAtlantique\obj\Debug\View\Index.g.cs
 D:\Bibliothèques\Documents\Visual Studio 2012\Projects\AirAtlantique\AirAtlantique\obj\Debug\View\MainWindow.g.cs
 D:\Bibliothèques\Documents\Visual Studio 2012\Projects\AirAtlantique\AirAtlantique\obj\Debug\View\Sessions.g.cs
+D:\Bibliothèques\Documents\Visual Studio 2012\Projects\AirAtlantique\AirAtlantique\obj\Debug\View\Login.baml
+D:\Bibliothèques\Documents\Visual Studio 2012\Projects\AirAtlantique\AirAtlantique\obj\Debug\View\Login.g.cs
+D:\Bibliothèques\Documents\Visual Studio 2012\Projects\AirAtlantique\Project_AirAtlantique_DRH\AirAtlantique\bin\Debug\AirAtlantique.exe.config
+D:\Bibliothèques\Documents\Visual Studio 2012\Projects\AirAtlantique\Project_AirAtlantique_DRH\AirAtlantique\obj\Debug\AirAtlantique.exe
+D:\Bibliothèques\Documents\Visual Studio 2012\Projects\AirAtlantique\Project_AirAtlantique_DRH\AirAtlantique\obj\Debug\AirAtlantique.pdb
