@@ -4,7 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
-             d:DesignHeight="800" d:DesignWidth="1200" Background="#FF2D2D2D" BorderBrush="#FF0088FF" BorderThickness="1,1,1,1">
+             d:DesignHeight="800" d:DesignWidth="1200" Background="#FF181818" BorderBrush="#FF00AADE" BorderThickness="1,1,1,1">
     <Grid Margin="0,0,0,0" Width="auto" Height="auto">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="60*"/>
@@ -15,9 +15,9 @@
             <RowDefinition Height="26*"/>
             <RowDefinition Height="241*"/>
         </Grid.RowDefinitions>
-        <TextBlock HorizontalAlignment="Left" Grid.Row="0" TextWrapping="Wrap" VerticalAlignment="Top" Height="50" Width="300" FontSize="34" Grid.Column="1" Foreground="White" Margin="50,10,0,0"><Run Language="fr-fr" Text="Gérer Sessions"/></TextBlock>
+        <TextBlock HorizontalAlignment="Left" Grid.Row="0" TextWrapping="Wrap" VerticalAlignment="Top" Height="50" Width="300" FontSize="34" Grid.Column="1" Foreground="#FF00AADE" Margin="50,10,0,0"><Run Language="fr-fr" Text="Gérer Sessions"/></TextBlock>
         <Button Content="←" ToolTip="Retour menu" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="33" Height="35" Background="{x:Null}" FontSize="36" Padding="1,-11,1,1" Click="Button_Click_1" Foreground="White"/>
-        <Canvas Grid.Row="0" Grid.Column="1" Panel.ZIndex="9999" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,0,300,30">
+        <Canvas Grid.Row="0" Grid.Column="1" Panel.ZIndex="9999" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,0,300,40">
             <Expander  HorizontalAlignment="Left" Header="Filtres" 
                       VerticalAlignment="Top" ExpandDirection="Down" Width="300" Foreground="White" FontSize="16">
                 <Grid Background="Black">
@@ -47,7 +47,7 @@
                                 <Setter Property="Background" Value="#3e3e42"></Setter>
                             </Trigger>
                         <Trigger Property="Control.IsMouseOver" Value="True">
-                            <Setter Property="Control.Background" Value="#FF0088FF" />
+                            <Setter Property="Control.Background" Value="#FF00AADE" />
                         </Trigger>
                     </Style.Triggers>
                     <Setter Property="FontSize" Value="14" />
@@ -59,9 +59,9 @@
                 <GridView >
                     <GridView.ColumnHeaderContainerStyle>
                         <Style TargetType="{x:Type GridViewColumnHeader}">
-                            <Setter Property="Background" Value="#292929"/>
-                            <Setter Property="BorderBrush" Value="#FF0088FF"/>
-                            <Setter Property="TextElement.Foreground" Value="White"/>
+                            <Setter Property="Background" Value="#FF181818"/>
+                            <Setter Property="BorderBrush" Value="Black"/>
+                            <Setter Property="TextElement.Foreground" Value="#FF00AADE"/>
                             <!--<Setter Property="IsHitTestVisible" Value="False" />-->
                         </Style>
                     </GridView.ColumnHeaderContainerStyle>
@@ -76,7 +76,7 @@
                     <GridViewColumn Width="200" Header="Date début" DisplayMemberBinding="{Binding DateDebut}"/>
                     <GridViewColumn Width="200" Header="Date fin" DisplayMemberBinding="{Binding DateFin}" />
                     <GridViewColumn Width="100" Header="Status" DisplayMemberBinding="{Binding Status}" />
-                    <GridViewColumn Width="90" Header="Edition">
+                    <GridViewColumn Width="120" Header="Edition">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
                                 <StackPanel>

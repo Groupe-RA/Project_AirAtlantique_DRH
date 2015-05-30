@@ -3,9 +3,10 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:wpfTool="clr-namespace:Xceed.Wpf.Toolkit;assembly=Xceed.Wpf.Toolkit"
              mc:Ignorable="d" 
-             d:DesignHeight="500" d:DesignWidth="900" Background="#FF2D2D2D" BorderBrush="#FF0088FF" BorderThickness="1,1,1,1">
-    <UserControl.Resources>
+             d:DesignHeight="500" d:DesignWidth="900" Background="#FF181818" BorderBrush="#FF00AADE" BorderThickness="1,1,1,1">
+    <!--<UserControl.Resources>
         <Style x:Key="myLBStyle" TargetType="{x:Type ListBoxItem}">
             <Setter Property="Template">
                 <Setter.Value>
@@ -25,27 +26,35 @@
                 </Setter.Value>
             </Setter>
         </Style>
-    </UserControl.Resources>
+    </UserControl.Resources>-->
 
     <Grid Margin="0,0,0,0">
-        <ListBox x:Name="ListFormations" ItemContainerStyle="{StaticResource myLBStyle}" HorizontalAlignment="Left" Height="250" Margin="533,122,0,0" VerticalAlignment="Top" Width="140"/>
-        <Button x:Name="DeleteButton" Content="Supprimer" HorizontalAlignment="Left" Margin="715,122,0,0" VerticalAlignment="Top" Width="75" Height="25" Click="DeleteButton_Click"/>
+        <ListBox x:Name="ListFormations" HorizontalAlignment="Left" Height="250" Margin="533,122,0,0" VerticalAlignment="Top" Width="140"/>
+        <Button x:Name="DeleteButton" Content="Supprimer" HorizontalAlignment="Left" Margin="715,122,0,0" VerticalAlignment="Top" Width="100" Height="25" Click="DeleteButton_Click"/>
         <Button x:Name="Ajouter" Content="Ajouter" HorizontalAlignment="Left" Margin="204,386,0,0" VerticalAlignment="Top" Width="120" Height="31" Click="Ajouter_Click"/>
         <TextBox x:Name="NameBox" HorizontalAlignment="Left" Height="21" Margin="84,126,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="183"/>
         <Button Content="←" ToolTip="Retour menu" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="35" Height="35" Background="{x:Null}" FontSize="36" Padding="1,-11,1,1" Click="Button_Click_1" Foreground="White"/>
-        <TextBlock HorizontalAlignment="Left" Margin="100,10,0,0" TextWrapping="Wrap" Text="Gérer Formation" VerticalAlignment="Top" Height="45" Width="250" FontSize="34" Foreground="White"/>
+        <TextBlock HorizontalAlignment="Left" Margin="100,10,0,0" TextWrapping="Wrap" Text="Gérer les formations" VerticalAlignment="Top" Height="45" Width="356" FontSize="34" Foreground="#FF00AADE"/>
         <GroupBox Header="Ajouter une formation" HorizontalAlignment="Left" Margin="62,68,0,0" VerticalAlignment="Top" Height="390" Width="394" Foreground="White">
-            <TextBlock x:Name="result" HorizontalAlignment="Center" TextWrapping="Wrap" Text="" VerticalAlignment="Bottom" Margin="0,0,0,10"/>
+            <TextBlock x:Name="result" HorizontalAlignment="Center" TextWrapping="Wrap" Text="" VerticalAlignment="Bottom" Margin="0,0,0,0"/>
         </GroupBox>
-        <ListBox x:Name="ListPostes" ItemContainerStyle="{StaticResource myLBStyle}" SelectionMode="Multiple" HorizontalAlignment="Left" Height="246" Margin="295,126,0,0" VerticalAlignment="Top" Width="129"/>
+        <ListBox x:Name="ListPostes" SelectionMode="Multiple" HorizontalAlignment="Left" Height="246" Margin="295,126,0,0" VerticalAlignment="Top" Width="129"/>
         <TextBlock HorizontalAlignment="Left" Margin="295,102,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="24" Width="119" Foreground="White"><Run Language="fr-fr" Text="Obligatoire pour"/></TextBlock>
         <TextBox x:Name="DescriptionBox" AcceptsReturn="True" HorizontalAlignment="Left" Height="127" Margin="84,197,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="183"/>
         <TextBlock HorizontalAlignment="Left" Margin="84,173,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="24" Width="77" Foreground="White"><Run Language="fr-fr" Text="Description"/></TextBlock>
         <TextBlock HorizontalAlignment="Left" Margin="84,102,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="24" Width="77" Foreground="White"><Run Language="fr-fr" Text="Nom"/></TextBlock>
         <GroupBox Header="Supprimer une formation" HorizontalAlignment="Left" Margin="498,68,0,0" VerticalAlignment="Top" Height="362" Width="333" Foreground="White"/>
-        <TextBox x:Name="DurationBox" HorizontalAlignment="Left" Height="23" Margin="204,349,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="63"/>
-        <TextBlock HorizontalAlignment="Left" Margin="84,348,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="24" Width="120" Foreground="White"><Run Language="fr-fr" Text="Durée validité (mois)"/></TextBlock>
-
+        <wpfTool:SingleUpDown x:Name="DurationBox" HorizontalAlignment="Left" Height="23" Margin="164,349,0,0"  Text="" VerticalAlignment="Top" Width="63" Background="#FF181818" BorderBrush="#FF555555" Foreground="#FF838383" RenderTransformOrigin="0.444,0.435">
+            <wpfTool:SingleUpDown.Style>
+                <Style TargetType="{x:Type wpfTool:SingleUpDown}">
+                    <Style.Resources>
+                        
+                    </Style.Resources>
+                </Style>
+                </wpfTool:SingleUpDown.Style>
+        </wpfTool:SingleUpDown>
+        <TextBlock HorizontalAlignment="Left" Margin="84,352,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="24" Width="80" Foreground="White"><Run Language="fr-fr" Text="Durée validité"/></TextBlock>
+        <TextBlock HorizontalAlignment="Left" Margin="237,352,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="24" Width="120" Foreground="White"><Run Language="fr-fr" Text="mois"/></TextBlock>
     </Grid>
 </UserControl>
     

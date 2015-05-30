@@ -56,6 +56,9 @@ namespace AirAtlantique
             ));
             */
 
+            StartCalendar.Value = DateTime.Now;
+            EndCalendar.Value = DateTime.Now;
+
             // Si mode édition
             if (idSessionEdition != 0)
                 PreselectEdit(idSessionEdition);

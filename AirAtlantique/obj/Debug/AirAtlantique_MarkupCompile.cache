@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 D:\Bibliothèques\Documents\Visual Studio 2012\Projects\AirAtlantique\Project_AirAtlantique_DRH\AirAtlantique\App.xaml
-71432843099
+11890237216
 
 36-1453045802
 23-87508240
-View\EditSessions.xaml;View\EmployesUI.xaml;View\Formations.xaml;View\Index.xaml;View\Login.xaml;View\MainWindow.xaml;View\Sessions.xaml;
+Themes\Metro\Dark\MetroDark.MSControls.Core.Implicit.xaml;Themes\Metro\Dark\Styles.Shared.xaml;Themes\Metro\Dark\Styles.WPF.xaml;Themes\Metro\Dark\Theme.Colors.xaml;View\EditSessions.xaml;View\EmployesUI.xaml;View\Formations.xaml;View\Index.xaml;View\Login.xaml;View\MainWindow.xaml;View\Sessions.xaml;
 
 False
 

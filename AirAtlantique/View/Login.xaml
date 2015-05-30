@@ -6,7 +6,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
     <UserControl.Background>
-        <SolidColorBrush Opacity="0.5" Color="Black"></SolidColorBrush>
+        <SolidColorBrush Opacity="0.7" Color="Black"></SolidColorBrush>
     </UserControl.Background>
     <Grid>
         <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="4" >
@@ -20,7 +20,7 @@
         </StackPanel>
         <TextBlock HorizontalAlignment="Center" Margin="0,20,0,0" FontSize="28" TextWrapping="Wrap" Text="Login" VerticalAlignment="Top" Height="42" Width="74" Foreground="White"/>
 
-        <TextBox x:Name="Username" MaxLength="20" HorizontalAlignment="Center" Height="31" Margin="51,103,51,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="198" FontSize="20"/>
+        <TextBox x:Name="Username" MaxLength="20" HorizontalAlignment="Center" Height="31" Margin="51,103,51,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="198"/>
         <PasswordBox x:Name="Password" MaxLength="20" PasswordChar="*" HorizontalAlignment="Left" Height="33" Margin="51,166,0,0" VerticalAlignment="Top" Width="198" FontSize="20"/>
         <Button x:Name="Connect" IsDefault="True" Content="Connexion" HorizontalAlignment="Center" Margin="0,0,0,45" VerticalAlignment="Bottom" Width="123" Height="29" Background="Black" Foreground="White" Click="Connect_Click"/>
         <TextBlock x:Name="Result" HorizontalAlignment="Center" Margin="0,0,0,80" TextWrapping="Wrap" Text="" VerticalAlignment="Bottom"/>

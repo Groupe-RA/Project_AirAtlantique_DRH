@@ -4,7 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
-             d:DesignHeight="800" d:DesignWidth="800" Background="#FF2D2D2D" BorderBrush="#FF0088FF" BorderThickness="1,1,1,1">
+             d:DesignHeight="800" d:DesignWidth="800" Background="#FF181818" BorderBrush="#FF00AADE" BorderThickness="1,1,1,1">
     <Grid Margin="0,0,0,0" Width="800" Height="800">
         <Grid.RowDefinitions>
             <RowDefinition Height="179*"/>
@@ -17,7 +17,7 @@
         <Button Margin="0,0,34,26" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="330" Height="164" Click="Button_Click_1">
             <StackPanel Width="{Binding RelativeSource={RelativeSource FindAncestor,AncestorType={x:Type Button}},Path=ActualWidth}" Height="{Binding RelativeSource={RelativeSource FindAncestor,AncestorType={x:Type Button}},Path=ActualHeight}" Orientation="Horizontal">
                 <Image Source="../Images/Gerer_Formation.png" Width="156" HorizontalAlignment="Left" Margin="0,10" VerticalAlignment="Center" Height="144"/>
-                <TextBlock TextWrapping="Wrap" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,52,0,29" Width="152" Height="83"><Run Language="fr-fr" Text="Gérer les formations" FontSize="24"/></TextBlock>
+                <TextBlock TextWrapping="Wrap" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,52,0,29" Width="152" Height="83"><Run Language="fr-fr" Text="Gérer formations" FontSize="24"/></TextBlock>
             </StackPanel>
         </Button>
         <Button Margin="25,0,0,26" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="330" Height="164" Click="Button_Click_2" Grid.Column="1">
