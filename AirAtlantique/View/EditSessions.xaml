@@ -15,8 +15,27 @@
             <RowDefinition Height="26*"/>
             <RowDefinition Height="241*"/>
         </Grid.RowDefinitions>
-        <TextBlock HorizontalAlignment="Center" Grid.Row="0" TextWrapping="Wrap" VerticalAlignment="Top" Height="34" Width="170" FontSize="24" Grid.Column="1" Foreground="White"><Run Language="fr-fr" Text="Gérer Sessions"/></TextBlock>
-        <Button Content="←" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="33" Height="35" Background="{x:Null}" FontSize="36" Padding="1,-11,1,1" Click="Button_Click_1" Foreground="White"/>
+        <TextBlock HorizontalAlignment="Left" Grid.Row="0" TextWrapping="Wrap" VerticalAlignment="Top" Height="50" Width="300" FontSize="34" Grid.Column="1" Foreground="White" Margin="50,10,0,0"><Run Language="fr-fr" Text="Gérer Sessions"/></TextBlock>
+        <Button Content="←" ToolTip="Retour menu" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="33" Height="35" Background="{x:Null}" FontSize="36" Padding="1,-11,1,1" Click="Button_Click_1" Foreground="White"/>
+        <Canvas Grid.Row="0" Grid.Column="1" Panel.ZIndex="9999" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,0,300,30">
+            <Expander  HorizontalAlignment="Left" Header="Filtres" 
+                      VerticalAlignment="Top" ExpandDirection="Down" Width="300" Foreground="White" FontSize="16">
+                <Grid Background="Black">
+                    <Grid.BitmapEffect>
+                        <DropShadowBitmapEffect />
+                    </Grid.BitmapEffect>
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+                    <StackPanel Grid.Row="0" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="0,0,0,0">
+                        <Label Content="Afficher sessions terminées" Foreground="White"></Label>
+                        <CheckBox x:Name="ShowEnded" Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" Checked="ShowEnded_Checked" Unchecked="ShowEnded_Checked"/>
+                    </StackPanel>
+                </Grid>
+            </Expander>
+        </Canvas>
         <ListView x:Name="EditSessionListView" AlternationCount="2" Height="634" Margin="0,2,0,0" VerticalAlignment="Top" Width="Auto" Grid.Row="1" Grid.Column="1" Background="#FF181818" GridViewColumnHeader.Click="GridViewColumnHeaderClickedHandler">
             <ListView.ItemContainerStyle>
                 <Style TargetType="ListViewItem">

@@ -39,6 +39,19 @@ namespace AirAtlantique
             IEnumerable<SessionView> donnees = new SessionsVM().theSessions;
 
             EditSessionListView.ItemsSource = donnees;
+            CollectionView view = (CollectionView)CollectionViewSource.GetDefaultView(EditSessionListView.ItemsSource);
+
+            view.Filter = FilterEnded;
+
+            
+        }
+
+        private bool FilterEnded(object item)
+        {
+            if (ShowEnded.IsChecked.Value == true)
+                return true;
+            else
+                return (item as Class.SessionView).Status.Equals("En attente") || (item as Class.SessionView).Status.Equals("En cours");
         }
 
         /// <summary>
@@ -159,6 +172,11 @@ namespace AirAtlantique
             SortDescription sd = new SortDescription(sortBy, direction);
             dataView.SortDescriptions.Add(sd);
             dataView.Refresh();
+        }
+
+        private void ShowEnded_Checked(object sender, RoutedEventArgs e)
+        {
+            CollectionViewSource.GetDefaultView(EditSessionListView.ItemsSource).Refresh();
         }
 
 

@@ -41,6 +41,10 @@ namespace AirAtlantique
             ListeFormation.ItemsSource = lesFormations;
             ListeEmploye.ItemsSource = lesEmployes;
 
+            CollectionView view = (CollectionView)CollectionViewSource.GetDefaultView(ListeEmploye.ItemsSource);
+            view.Filter = FilterJobFor;
+
+            /*
             StartCalendar.BlackoutDates.Add(new CalendarDateRange(
                 new DateTime(1990, 1, 1),
                 DateTime.Now
@@ -50,11 +54,14 @@ namespace AirAtlantique
                 new DateTime(1990, 1, 1),
                 DateTime.Now
             ));
+            */
 
+            // Si mode édition
             if (idSessionEdition != 0)
                 PreselectEdit(idSessionEdition);
         }
 
+        // Si mode édition
         private void PreselectEdit(int idToEdit)
         {
             Save.Content = "Modifier";
@@ -63,8 +70,8 @@ namespace AirAtlantique
 
             Database.Session theSession = sessiondao.GetById(idToEdit);
 
-            StartCalendar.SelectedDate = theSession.DateStart;
-            EndCalendar.SelectedDate = theSession.DateEnd;
+            StartCalendar.Value = theSession.DateStart;
+            EndCalendar.Value = theSession.DateEnd;
 
             ListeFormation.SelectedValuePath = "Id";
 
@@ -84,6 +91,16 @@ namespace AirAtlantique
             foreach (object Emp in test)
                 ListeEmploye.SelectedItems.Add(Emp);
             // fin hack
+        }
+
+
+        private bool FilterJobFor(object item)
+        {
+            var formationSelect = (Class.FormationView)ListeFormation.SelectedItem;
+            if (formationSelect != null)
+                return formationSelect.RequiredForJobs.Any(x => x == (item as Class.Employes).Poste);
+            else
+                return false;
         }
 
         /// <summary>
@@ -110,17 +127,24 @@ namespace AirAtlantique
 
             try
             {
-                if (StartCalendar.SelectedDate != null) 
-                    nouvelleSession.DateDebut = StartCalendar.SelectedDate.Value; 
+                if ((DateTime)StartCalendar.Value < DateTime.Now || (DateTime)EndCalendar.Value < DateTime.Now)
+                    throw new Exception("Les dates choisies sont déja écoulées");
+
+                if (StartCalendar.Value != null) 
+                    nouvelleSession.DateDebut = (DateTime)StartCalendar.Value; 
                 else 
                     throw new Exception("Aucune date de début choisie");
 
-                if (EndCalendar.SelectedDate != null)
-                    nouvelleSession.DateFin = EndCalendar.SelectedDate.Value;
+                if (EndCalendar.Value != null)
+                    nouvelleSession.DateFin = (DateTime)EndCalendar.Value;
                 else
                     throw new Exception("Aucune date de fin choisie");
 
                 nouvelleSession.FormationSession = (Class.FormationView)ListeFormation.SelectedItem;
+
+                if (ListeEmploye.SelectedItems.Count == 0)
+                    throw new Exception("Aucun employé sélectionné ou éligible");
+
                 nouvelleSession.EmployesParticipants = ListeEmploye.SelectedItems.Cast<Class.Employes>().Select(x => x.Id);
 
                 if (!IsModif)
@@ -147,6 +171,12 @@ namespace AirAtlantique
             {
                 Mouse.Capture(null);
             }
+        }
+
+        // Called when Selection changed to refresh employee list
+        private void FormationSelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            CollectionViewSource.GetDefaultView(ListeEmploye.ItemsSource).Refresh();
         }
     }
 }

@@ -16,7 +16,7 @@
                     <Setter Property="FontFamily" Value="Marlett" />
                 </Style>
             </StackPanel.Resources>
-            <TextBlock x:Name="End" Text="r"/>
+            <TextBlock x:Name="End" Text="r" ToolTip="Fermer"/>
         </StackPanel>
         <TextBlock HorizontalAlignment="Center" Margin="0,20,0,0" FontSize="28" TextWrapping="Wrap" Text="Login" VerticalAlignment="Top" Height="42" Width="74" Foreground="White"/>
 

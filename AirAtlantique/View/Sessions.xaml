@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:wpfTool="clr-namespace:Xceed.Wpf.Toolkit;assembly=Xceed.Wpf.Toolkit"
              mc:Ignorable="d" 
              d:DesignHeight="800" d:DesignWidth="900" Background="#FF2D2D2D" BorderBrush="#FF0088FF" BorderThickness="1,1,1,1">
     <UserControl.Resources>
@@ -27,7 +28,7 @@
         </Style>
     </UserControl.Resources>
     <Grid Margin="0,1,0,-1">
-        <ListBox x:Name="ListeFormation" HorizontalAlignment="Left" Height="328" Margin="125,153,-4,-181" VerticalAlignment="Top" Width="179"  ItemContainerStyle="{StaticResource myLBStyle}"/>
+        <ListBox x:Name="ListeFormation" HorizontalAlignment="Left" Height="328" Margin="125,153,-4,-181" VerticalAlignment="Top" Width="179"  ItemContainerStyle="{StaticResource myLBStyle}" SelectionChanged="FormationSelectionChanged"/>
         <ListBox x:Name="ListeEmploye" HorizontalAlignment="Left" Height="328" Margin="333,153,-213,-181" VerticalAlignment="Top" Width="180" SelectionMode="Multiple"  ItemContainerStyle="{StaticResource myLBStyle}"/>
         <Button x:Name="Save" Content="Enregistrer" HorizontalAlignment="Center" Margin="0,0,0,80" VerticalAlignment="Bottom" Width="184" Height="56" Click="Save_Click"/>
         <TextBlock x:Name="result" HorizontalAlignment="Center" Text="" Foreground="#FF37A416" VerticalAlignment="Bottom" Margin="0,0,0,50" FontSize="18" />
@@ -35,10 +36,10 @@
         <TextBlock HorizontalAlignment="Left" Margin="183,121,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="White"><Run Language="fr-fr" Text="Formations"/></TextBlock>
         <TextBlock HorizontalAlignment="Left" Margin="620,126,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="22" Width="102" Foreground="White"><Run Language="fr-fr" Text="Date de début"/></TextBlock>
         <TextBlock HorizontalAlignment="Left" Margin="620,326,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="22" Width="102" Foreground="White"><Run Language="fr-fr" Text="Date de fin"/></TextBlock>
-        <TextBlock HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Top" Height="30" Width="208" FontSize="24" Foreground="White"><Run Language="fr-fr" Text="Nouvelle Session"/></TextBlock>
-        <Button Content="←" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="35" Height="35" Background="{x:Null}" FontSize="36" Padding="1,-11,1,1" Click="Button_Click_1" Foreground="White"/>
-        <Calendar x:Name="StartCalendar" HorizontalAlignment="Left" Margin="571,153,0,0" VerticalAlignment="Top"/>
-        <Calendar x:Name="EndCalendar"  HorizontalAlignment="Left" Margin="571,348,0,0" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Height="50" Width="308" FontSize="34" Foreground="White" Margin="100,10,0,0"><Run Language="fr-fr" Text="Nouvelle Session"/></TextBlock>
+        <Button Content="←" ToolTip="Retour menu" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="35" Height="35" Background="{x:Null}" FontSize="36" Padding="1,-11,1,1" Click="Button_Click_1" Foreground="White"/>
+        <wpfTool:DateTimePicker x:Name="StartCalendar" HorizontalAlignment="Left" Margin="571,153,0,0" VerticalAlignment="Top"/>
+        <wpfTool:DateTimePicker x:Name="EndCalendar"  HorizontalAlignment="Left" Margin="571,348,0,0" VerticalAlignment="Top"/>
 
     </Grid>
 </UserControl>

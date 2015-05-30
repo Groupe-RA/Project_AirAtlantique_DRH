@@ -40,7 +40,7 @@
             </StackPanel>
         </Button>
         <StackPanel Grid.Column="1" Orientation="Horizontal" Height="50" VerticalAlignment="Top" FlowDirection="RightToLeft" Margin="0,0,20,0">
-            <Button x:Name="Logout" Width="40" Height="40" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" Margin="0,0,5,0" Click="Logout_Click">
+            <Button x:Name="Logout" ToolTip="Deconnexion" Width="40" Height="40" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" Margin="0,0,5,0" Click="Logout_Click">
                 <Image Source="../Images/logout.png" Width="20" VerticalAlignment="Center" Height="20" />
             </Button>
             <TextBlock x:Name="Login" VerticalAlignment="Center" Padding="0" Text="Logged as " Foreground="#FF22CF1A"/>

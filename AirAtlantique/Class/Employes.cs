@@ -59,7 +59,7 @@ namespace AirAtlantique.Class
 
         public override string ToString()
         {
-            return Nom + " " + Prenom;
+            return Nom.ToUpper() + " " + Prenom + " - " + Poste;
         }
 
     }
